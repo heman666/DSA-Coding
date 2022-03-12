@@ -25,6 +25,36 @@ long long int getSqrt(int number)
     return ans;
 }
 
+double GetPrecision(int number, int sq_number, int precision)
+{
+    double ans = sq_number;
+    double pre = 1;
+    for (int i = 1; i <= precision; i++)
+    {
+        pre = pre / 10;
+        for (double j = sq_number; j * j < number; j += pre)
+        {
+            ans = j;
+        }
+    }
+    return ans;
+}
+
+float GetPrecision_f(int number, int sq_number, int precision)
+{
+    float ans = sq_number;
+    float pre = 1;
+    for (int i = 1; i <= precision; i++)
+    {
+        pre = pre / 10;
+        for (float j = sq_number; j * j < number; j += pre)
+        {
+            ans = j;
+        }
+    }
+    return ans;
+}
+
 int main()
 {
     int number, precision;
@@ -33,6 +63,7 @@ int main()
     cout << number << " " << precision << endl;
 
     int sqrt_Num = getSqrt(number);
-    cout << "Square root of the number : " << number << " is : " << sqrt_Num << endl;
+    cout << "Square root of the number : " << number << " is : " << GetPrecision(number, sqrt_Num, precision) << endl;
+    cout << "Square root of the number : " << number << " is : " << GetPrecision_f(number, sqrt_Num, precision) << endl;
     return 0;
 }
